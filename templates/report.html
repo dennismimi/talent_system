@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>Register User</h2>
+<section class="jumbotron text-center" style="background-color:rgba(50, 226, 34, 0.747)">
+  <div class="container">
+    <p class="lead text-muted">
+    <h6>Sports</h6>
+    </p>
+  </div>
+</section>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        {% if messages %}
+        <ul class="messages" style="background-color:rgba(50, 226, 34, 0.747)">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% if votes %}
+        <ul class="list-group">
+            {% for votes in votes %}
+            <li class="list-group-item"></li>
+            <li><a href="#">{{votes.nickname}}</a></li>
+            <li>{{votes.date}}</li>
+            <li>{{votes.rating}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if comments %}
+        <ul class="list-group">
+            {% for comment in comments %}
+            <li class="list-group-item"></li>
+            <li><a href="#">{{comment.title}}</a></li>
+            <li>{{comment.comment}}</li>
+            <li>{{comment.date}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+{% endblock content %}

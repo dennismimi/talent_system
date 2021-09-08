@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Child Service</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'css/bootstrap.min.css' %}"
+      crossorigin="anonymous"
+    />
+
+    <meta name="theme-color" content="#563d7c" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% load crispy_forms_tags %}
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1>CPMIS PORTAL</h1>
+    <p class="lead text-muted">
+      LOGIN PAGE
+    </p>
+  </div>
+</section>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <form method="POST" action="" enctype="multipart/form-data">
+          {% csrf_token %} 
+          {{form| crispy}}
+          <input type="submit" value="submit form" class="btn btn-primary" />
+        </form>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>

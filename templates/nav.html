@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="{% url 'index' %}">Sports System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        {% url 'index' as index %}
+
+        <li {% if request.path == home %}class="nav-item active"{% endif %}>
+          <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          
+        </li>
+        <li {% if request.path == home %}class="nav-item active"{% endif %}>
+          <a class="nav-link" href="{% url 'vote' %}">Vote <span class="sr-only">(current)</span></a>
+        </li>
+        <li {% if request.path == home %}class="nav-item active"{% endif %}>
+          <a class="nav-link" href="{% url 'comments' %}">Comment <span class="sr-only">(current)</span></a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Registration</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown10">
+              <a class="dropdown-item" href="{% url 'registerTeam' %}">Register Team</a>
+              <a class="dropdown-item" href="{% url 'playerRegister' %}">Register Player</a>
+            </div> 
+          </li>
+          {% endif %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown10">
+              <a class="dropdown-item" href="{% url 'report' %}">Vote Results</a>
+              <a class="dropdown-item" href="{% url 'comment' %}">Comments</a>
+            </div> 
+          </li>
+          <li {% if request.path == home %}class="nav-item active"{% endif %}>
+            <a class="nav-link" href="{% url 'about' %}">About <span class="sr-only">(current)</span></a>
+          </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown10">
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              {% endif %}
+            </div>
+          </li>
+      </ul>
+      </ul>
+
+    </div>
+  </nav>
+  

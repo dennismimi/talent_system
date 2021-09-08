@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class="jumbotron text-center">
+  <div class="container">
+    <p class="lead text-muted">
+    <h6>Sports</h6>
+    </p>
+  </div>
+</section>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        {% if messages %}
+        <ul class="messages" style="background-color:#ccc">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <form method="POST" action="" enctype="multipart/form-data">
+          {% csrf_token %} 
+          {{form| crispy}}
+          <input type="submit" value="submit form" class="btn btn-primary" />
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
